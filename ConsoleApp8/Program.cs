@@ -67,8 +67,8 @@ using System;
 //Q2
 interface iauthenication
 {
-    bool authenticateUser(string username, string password);
-    bool authorizeUser(string username, string role);
+    bool authenicateuser(string username, string password);
+    bool authorizeuser(string username, string role);
 }
 
 class BasicAuthenticationService : iauthenication
@@ -85,7 +85,7 @@ class BasicAuthenticationService : iauthenication
         { "user2", "user" }
     };
 
-    public bool authenticateUser(string username, string password)
+    public bool authenicateuser(string username, string password)
     {
         if (_credentials.ContainsKey(username) && _credentials[username] == password)
         {
@@ -94,7 +94,7 @@ class BasicAuthenticationService : iauthenication
         return false;
     }
 
-    public bool authorizeUser(string username, string role)
+    public bool authorizeuser(string username, string role)
     {
         if (_roles.ContainsKey(username) && _roles[username] == role)
         {
@@ -108,8 +108,8 @@ class Program
     static void Main(string[] args)
     {
         iauthenication authService = new BasicAuthenticationService();
-        bool isAuthenticated = authService.authenticateUser("user1", "password1");
-        bool isAuthorized = authService.authorizeUser("user1", "admin");
+        bool isAuthenticated = authService.authenicateuser("user1", "password1");
+        bool isAuthorized = authService.authorizeuser("user1", "admin");
         Console.WriteLine($"User authenticated: {isAuthenticated}");
         Console.WriteLine($"User authorized: {isAuthorized}");
     }
